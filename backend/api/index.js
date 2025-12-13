@@ -17,13 +17,23 @@ const adminRoutes = require("../routes/admin");
 const app = express();
 
 // Middleware
+const allowedOrigins = ["http://localhost:3000", "http://127.0.0.1:3000"];
+
+// Add all Vercel app domains
+const vercelDomainRegex = /https:\/\/.*\.vercel\.app$/;
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://booksy-frontend.vercel.app", // Replace with your actual frontend domain
-      /\.vercel\.app$/, // Allow all Vercel domains
-    ],
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin) || vercelDomainRegex.test(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
