@@ -1,17 +1,20 @@
 # Booksy - Full-Stack Book Management & E-Commerce Platform
 
-A modern, feature-rich book management and e-commerce application built with React, Node.js, Express, and MongoDB. Booksy provides a complete solution for managing book inventory, user collections, and online book shopping.
+A modern, feature-rich book management application built with React, Node.js, Express, and MongoDB. Booksy provides a complete solution for managing book inventory, user collections, and online book shopping.
 
 ## 🚀 Key Features
 
 ### 🔐 Authentication & Security
+
 - JWT-based authentication system
 - Role-based access control (Admin & User)
 - Password reset with OTP email verification
 - Secure password hashing with bcrypt
 
 ### 📚 Book Management
+
 - **Admin Features:**
+
   - Add, edit, and delete books
   - Manage entire book inventory
   - View all registered users
@@ -25,18 +28,21 @@ A modern, feature-rich book management and e-commerce application built with Rea
   - Add books to shopping cart
 
 ### 🛒 E-Commerce Features
+
 - Shopping cart functionality
 - Real-time cart updates
 - Cart item quantity management
 - Total price calculation
 
 ### 🔍 Search & Discovery
+
 - Search books via Google Books API
 - Browse books by subject/genre
 - Filter and pagination support
 - Book details with ratings and reviews
 
 ### 🎨 Modern UI/UX
+
 - Responsive design for all devices
 - Dark/Light theme toggle
 - Gradient text effects
@@ -46,6 +52,7 @@ A modern, feature-rich book management and e-commerce application built with Rea
 ## 🛠️ Tech Stack
 
 **Frontend:**
+
 - React 18
 - React Router
 - Context API (Auth, Cart, Theme)
@@ -53,6 +60,7 @@ A modern, feature-rich book management and e-commerce application built with Rea
 - Modern CSS with custom properties
 
 **Backend:**
+
 - Node.js
 - Express.js
 - MongoDB with Mongoose
@@ -94,6 +102,7 @@ Default admin email: `khantyogesh021@gmail.com`
 ## 📧 Contact
 
 **YK IT Systems**
+
 - Email: khantyogesh021@gmail.com
 - Phone: +91 9023831416
 
@@ -104,4 +113,3 @@ Default admin email: `khantyogesh021@gmail.com`
 ---
 
 Built with ❤️ by YK IT Systems
-

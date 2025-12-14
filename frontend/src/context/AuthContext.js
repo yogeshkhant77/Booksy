@@ -4,12 +4,8 @@ import { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 // Set axios baseURL based on environment
-const isLocalhost =
-  window.location.hostname === "localhost" ||
-  window.location.hostname === "127.0.0.1";
-const API_BASE_URL = isLocalhost
-  ? "http://localhost:5000"
-  : "https://booksy-backend-git-main-khantyogesh021-gmailcoms-projects.vercel.app";
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL || "https://booksy-jm7i.onrender.com";
 axios.defaults.baseURL = API_BASE_URL;
 
 const AuthContext = createContext();
