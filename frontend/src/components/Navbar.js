@@ -11,6 +11,7 @@ const Navbar = () => {
   const { getCartItemCount } = useCart()
   const navigate = useNavigate()
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const dropdownRef = useRef(null)
 
   const handleLogout = () => {
@@ -32,6 +33,19 @@ const Navbar = () => {
     }
   }, [])
 
+  // Close mobile menu when resizing to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setMobileMenuOpen(false)
+      }
+    }
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  const closeMobileMenu = () => setMobileMenuOpen(false)
+
   return (
     <nav className="navbar">
       <div className="container">
@@ -40,25 +54,40 @@ const Navbar = () => {
              BookSy
           </Link>
           <div className="navbar-right">
-            <ul className="navbar-nav">
+            <input
+              type="checkbox"
+              id="checkbox"
+              checked={mobileMenuOpen}
+              onChange={(e) => setMobileMenuOpen(e.target.checked)}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+            />
+            <label htmlFor="checkbox" className="toggle" aria-hidden="true">
+              <div className="bars" id="bar1"></div>
+              <div className="bars" id="bar2"></div>
+              <div className="bars" id="bar3"></div>
+            </label>
+
+            <div className={`navbar-menu ${mobileMenuOpen ? "is-open" : ""}`}>
+              <ul className="navbar-nav">
               <li>
-                <Link to="/home">Home</Link>
+                <Link to="/home" onClick={closeMobileMenu}>Home</Link>
               </li>
               <li>
-                <Link to="/books">Books</Link>
+                <Link to="/books" onClick={closeMobileMenu}>Books</Link>
               </li>
               <li>
-                <Link to="/search-books">Search Books</Link>
+                <Link to="/search-books" onClick={closeMobileMenu}>Search Books</Link>
               </li>
               <li>
-                <Link to="/browse-books">Browse All Books</Link>
+                <Link to="/browse-books" onClick={closeMobileMenu}>Browse All Books</Link>
               </li>
               {user ? (
                 <>
                   {user.role === "admin" ? (
                     <>
                       <li>
-                        <Link to="/add-book">Add Book</Link>
+                        <Link to="/add-book" onClick={closeMobileMenu}>Add Book</Link>
                       </li>
                       <li ref={dropdownRef} style={{ position: "relative" }}>
                         <button
@@ -96,7 +125,10 @@ const Navbar = () => {
                           >
                             <Link
                               to="/users"
-                              onClick={() => setDropdownOpen(false)}
+                              onClick={() => {
+                                setDropdownOpen(false)
+                                closeMobileMenu()
+                              }}
                               style={{
                                 display: "block",
                                 padding: "0.75rem 1rem",
@@ -111,7 +143,10 @@ const Navbar = () => {
                             </Link>
                             <Link
                               to="/cart"
-                              onClick={() => setDropdownOpen(false)}
+                              onClick={() => {
+                                setDropdownOpen(false)
+                                closeMobileMenu()
+                              }}
                               style={{
                                 display: "block",
                                 padding: "0.75rem 1rem",
@@ -151,10 +186,10 @@ const Navbar = () => {
                   ) : (
                     <>
                       <li>
-                        <Link to="/my-books">My Books</Link>
+                        <Link to="/my-books" onClick={closeMobileMenu}>My Books</Link>
                       </li>
                       <li>
-                        <Link to="/cart" className="cart-link" style={{ position: "relative" }}>
+                        <Link to="/cart" className="cart-link" style={{ position: "relative" }} onClick={closeMobileMenu}>
                           🛒 Cart
                           {getCartItemCount() > 0 && (
                             <span
@@ -219,17 +254,23 @@ const Navbar = () => {
               ) : (
                 <>
                   <li>
-                    <Link to="/login">Login</Link>
+                    <Link to="/login" onClick={closeMobileMenu}>Login</Link>
                   </li>
                   <li>
-                    <Link to="/register">Register</Link>
+                    <Link to="/register" onClick={closeMobileMenu}>Register</Link>
                   </li>
                 </>
               )}
-            </ul>
-            <button onClick={toggleTheme} className="theme-toggle-navbar" aria-label="Toggle theme">
-              {theme === "dark" ? "☀️" : "🌙"}
-            </button>
+              </ul>
+            </div>
+            <label className="switch theme-switch" aria-label="Toggle theme">
+              <input
+                type="checkbox"
+                checked={theme === "dark"}
+                onChange={toggleTheme}
+              />
+              <span className="slider"></span>
+            </label>
           </div>
         </div>
       </div>

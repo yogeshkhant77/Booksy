@@ -1,5 +1,10 @@
 "use client"
 
+import { ReactComponent as LinkedinIcon } from "../assets/social/linkedin.svg"
+import { ReactComponent as InstagramIcon } from "../assets/social/instagram.svg"
+import { ReactComponent as XIcon } from "../assets/social/x.svg"
+import { ReactComponent as FacebookIcon } from "../assets/social/facebook.svg"
+
 const Footer = () => {
   return (
     <footer className="footer">
@@ -29,33 +34,41 @@ const Footer = () => {
               href="https://www.linkedin.com/in/yogeshkhant19/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="footer-link"
+              className="footer-link footer-social-icon"
+              aria-label="LinkedIn"
+              title="LinkedIn"
             >
-              LinkedIn
+              <LinkedinIcon className="footer-social-svg" aria-hidden="true" focusable="false" />
             </a>
             <a 
               href="https://www.instagram.com/yogeshsinhkhant?igsh=bzg4OWFoYnd6eXZv&utm_source=qr" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="footer-link"
+              className="footer-link footer-social-icon"
+              aria-label="Instagram"
+              title="Instagram"
             >
-               Instagram
+              <InstagramIcon className="footer-social-svg" aria-hidden="true" focusable="false" />
             </a>
             <a 
               href="https://x.com/yogesh_khant_77?s=21" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="footer-link"
+              className="footer-link footer-social-icon"
+              aria-label="X"
+              title="X"
             >
-              X (Twitter)
+              <XIcon className="footer-social-svg" aria-hidden="true" focusable="false" />
             </a>
             <a 
               href="https://www.facebook.com/share/1JbtkyvkS5/?mibextid=wwXIfr" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="footer-link"
+              className="footer-link footer-social-icon"
+              aria-label="Facebook"
+              title="Facebook"
             >
-               Facebook
+              <FacebookIcon className="footer-social-svg" aria-hidden="true" focusable="false" />
             </a>
           </div>
         </div>
