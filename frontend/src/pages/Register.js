@@ -56,9 +56,10 @@ const Register = () => {
 
   return (
     <div className="auth-container">
-      <button onClick={toggleTheme} className="theme-toggle-auth" aria-label="Toggle theme">
-        {theme === "dark" ? "☀️" : "🌙"}
-      </button>
+      <label className="switch theme-switch theme-toggle-auth" aria-label="Toggle theme">
+        <input type="checkbox" checked={theme === "dark"} onChange={toggleTheme} />
+        <span className="slider"></span>
+      </label>
       <div className="auth-form">
         <h2>Create Account</h2>
         <p className="subtitle">Join us and start managing your books</p>
