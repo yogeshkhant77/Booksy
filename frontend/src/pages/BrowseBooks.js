@@ -32,6 +32,7 @@ const BrowseBooks = () => {
 
   useEffect(() => {
     fetchBooks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subject, currentPage]);
 
   const fetchBooks = async () => {

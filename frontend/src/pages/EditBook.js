@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import axios from "axios"
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 const EditBook = () => {
   const [formData, setFormData] = useState({
@@ -13,21 +13,22 @@ const EditBook = () => {
     stock: "",
     isbn: "",
     description: "",
-  })
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [fetchLoading, setFetchLoading] = useState(true)
-  const navigate = useNavigate()
-  const { id } = useParams()
+  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [fetchLoading, setFetchLoading] = useState(true);
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   useEffect(() => {
-    fetchBook()
-  }, [id])
+    fetchBook();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   const fetchBook = async () => {
     try {
-      const response = await axios.get(`/api/books/${id}`)
-      const book = response.data
+      const response = await axios.get(`/api/books/${id}`);
+      const book = response.data;
       setFormData({
         title: book.title,
         author: book.author,
@@ -36,42 +37,42 @@ const EditBook = () => {
         stock: book.stock,
         isbn: book.isbn,
         description: book.description,
-      })
+      });
     } catch (error) {
-      setError("Failed to fetch book details")
+      setError("Failed to fetch book details");
     } finally {
-      setFetchLoading(false)
+      setFetchLoading(false);
     }
-  }
+  };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setError("")
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
     try {
-      await axios.put(`/api/books/${id}`, formData)
-      navigate("/books")
+      await axios.put(`/api/books/${id}`, formData);
+      navigate("/books");
     } catch (error) {
-      setError(error.response?.data?.message || "Failed to update book")
+      setError(error.response?.data?.message || "Failed to update book");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   if (fetchLoading) {
     return (
       <div className="loading-screen">
         <div className="spinner"></div>
       </div>
-    )
+    );
   }
 
   return (
@@ -119,7 +120,13 @@ const EditBook = () => {
           />
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "1rem",
+          }}
+        >
           <div className="form-group">
             <label htmlFor="price">Price ($)</label>
             <input
@@ -176,16 +183,26 @@ const EditBook = () => {
         </div>
 
         <div style={{ display: "flex", gap: "1rem", marginTop: "1.5rem" }}>
-          <button type="submit" className="btn btn-success" disabled={loading} style={{ flex: 1 }}>
+          <button
+            type="submit"
+            className="btn btn-success"
+            disabled={loading}
+            style={{ flex: 1 }}
+          >
             {loading ? "Updating Book..." : "💾 Update Book"}
           </button>
-          <button type="button" onClick={() => navigate("/books")} className="btn btn-outline" style={{ flex: 1 }}>
+          <button
+            type="button"
+            onClick={() => navigate("/books")}
+            className="btn btn-outline"
+            style={{ flex: 1 }}
+          >
             Cancel
           </button>
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default EditBook
+export default EditBook;

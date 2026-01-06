@@ -23,7 +23,8 @@ const BookActions = ({ book, isGoogleBook = false }) => {
     } else if (user && bookId) {
       checkLikedStatus();
     }
-  }, [user, book.isbn, isGoogleBook]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, book.isbn, isGoogleBook, book._id, dbBookId]);
 
   const checkIfBookExists = async () => {
     if (!book.isbn) return;
@@ -208,11 +209,7 @@ const BookActions = ({ book, isGoogleBook = false }) => {
           className="btn-swipe"
           title={inCart ? "Already in cart" : "Add to cart"}
         >
-          {addingToCart
-            ? "Adding..."
-            : inCart
-            ? " In Cart"
-            : " Add to Cart"}
+          {addingToCart ? "Adding..." : inCart ? " In Cart" : " Add to Cart"}
         </button>
       )}
     </div>
