@@ -156,7 +156,7 @@ const Books = () => {
                 <div className="book-actions" style={{ marginTop: "10px" }}>
                   <Link
                     to={`/edit-book/${book._id}`}
-                    className="btn btn-primary"
+                    className="btn-swipe"
                   >
                     Edit
                   </Link>
