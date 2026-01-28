@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 * {
   margin: 0;
@@ -21,10 +21,13 @@
   --gray: #64748b;
   --gray-light: #e2e8f0;
   --white: #ffffff;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  
+  --shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
   /* Light mode colors */
   --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
@@ -46,13 +49,27 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Loading Screen */
@@ -74,7 +91,9 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .container {
@@ -110,13 +129,21 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
   color: var(--white);
   transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary) 100%
+  );
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
 }
@@ -168,12 +195,58 @@ body {
 }
 
 /* Heart Like Button */
+/* Like Button */
+.btn-like {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background-color: #ffffff;
+  border: 2px solid #ddd;
+  color: #666;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.btn-like .heart-icon {
+  font-size: 18px;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.btn-like:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.btn-like:hover .heart-icon {
+  color: #ef4444;
+}
+
+.btn-like.liked {
+  background-color: #fef2f2;
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.btn-like.liked .heart-icon {
+  color: #ef4444;
+}
+
+.btn-like:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .heart-container {
   --heart-color: rgb(255, 91, 239);
   position: relative;
   width: 50px;
   height: 50px;
-  transition: .3s;
+  transition: 0.3s;
   display: inline-block;
 }
 
@@ -211,7 +284,7 @@ body {
 
 .heart-container .svg-celebrate {
   position: absolute;
-  animation: keyframes-svg-celebrate .5s;
+  animation: keyframes-svg-celebrate 0.5s;
   animation-fill-mode: forwards;
   display: none;
   stroke: var(--heart-color);
@@ -316,7 +389,7 @@ body {
   height: 3rem;
   padding: 0 2rem;
   border-radius: 1.5rem;
-  background:white;
+  background: white;
   background-size: 400%;
   color: black;
   border: 1px solid black;
@@ -544,13 +617,18 @@ body {
 }
 
 .book-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary),
+    var(--accent)
+  );
 }
 
 .book-card:hover {
@@ -583,6 +661,59 @@ body {
   margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border-color);
+}
+
+/* Book Actions Wrapper - Like and Add to Cart with space between */
+.book-actions-wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.book-actions-wrapper .btn-like {
+  flex: 0 0 auto;
+  width: 130px;
+}
+
+.book-actions-wrapper .btn-swipe {
+  flex: 0 0 auto;
+  width: 140px;
+}
+
+/* Admin Actions - Edit left, Delete right */
+.book-actions-admin {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.book-actions-admin .btn-swipe {
+  flex: 0 0 auto;
+  width: 140px;
+}
+
+.book-actions-admin .bin-button {
+  flex: 0 0 auto;
+}
+
+/* Add to My Books - Centered */
+.book-actions-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.book-actions-center .btn-swipe {
+  flex: 0 0 auto;
+  width: 160px;
 }
 
 /* Search Form Container */
@@ -637,7 +768,7 @@ body {
   right: 0;
   bottom: 0;
   background-color: #f4f4f5;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 30px;
   box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
@@ -646,14 +777,14 @@ body {
 .slider:before {
   position: absolute;
   content: "";
-  height: var(--size-of-icon,1.4em);
-  width: var(--size-of-icon,1.4em);
+  height: var(--size-of-icon, 1.4em);
+  width: var(--size-of-icon, 1.4em);
   border-radius: 20px;
-  left: var(--slider-offset,0.3em);
+  left: var(--slider-offset, 0.3em);
   top: 50%;
   transform: translateY(-50%);
-  background: linear-gradient(40deg,#ff0080,#ff8c00 70%);
-  transition: .4s;
+  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+  transition: 0.4s;
 }
 
 .switch input:checked + .slider {
@@ -661,10 +792,12 @@ body {
 }
 
 .switch input:checked + .slider:before {
-  left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
+  left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
   background: #303136;
   /* change the value of second inset in box-shadow to change the angle and direction of the moon */
-  box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+  box-shadow:
+    inset -3px -2px 5px -2px #8983f7,
+    inset -10px -4px 0 0 #a3dafb;
 }
 
 .theme-toggle-auth {
@@ -709,7 +842,9 @@ body {
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 /* Hide the mobile menu checkbox input on all screen sizes */
@@ -844,19 +979,27 @@ body {
 }
 
 .auth-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   right: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
   animation: rotate 20s linear infinite;
 }
 
 @keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .auth-form {
@@ -871,7 +1014,9 @@ body {
   z-index: 1;
   animation: fadeInUp 0.5s ease;
   border: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 @keyframes fadeInUp {
@@ -955,7 +1100,9 @@ body {
   border-radius: 24px;
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .book-form h2 {
@@ -974,16 +1121,26 @@ body {
 .hero-section {
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(139, 92, 246, 0.1) 100%
+  );
   border-radius: 24px;
   margin-bottom: 3rem;
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .dark .hero-section {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.2) 0%,
+    rgba(139, 92, 246, 0.2) 100%
+  );
 }
 
 .hero-section h1 {
@@ -1085,7 +1242,11 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-light) 0%,
+    var(--accent) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1229,7 +1390,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    transition-duration: .5s;
+    transition-duration: 0.5s;
   }
 
   .bars {
@@ -1240,37 +1401,38 @@ body {
   }
 
   #bar2 {
-    transition-duration: .8s;
+    transition-duration: 0.8s;
   }
 
-  #bar1, #bar3 {
+  #bar1,
+  #bar3 {
     width: 70%;
   }
 
   #checkbox:checked + .toggle .bars {
     position: absolute;
-    transition-duration: .5s;
+    transition-duration: 0.5s;
   }
 
   #checkbox:checked + .toggle #bar2 {
     transform: scaleX(0);
-    transition-duration: .5s;
+    transition-duration: 0.5s;
   }
 
   #checkbox:checked + .toggle #bar1 {
     width: 100%;
     transform: rotate(45deg);
-    transition-duration: .5s;
+    transition-duration: 0.5s;
   }
 
   #checkbox:checked + .toggle #bar3 {
     width: 100%;
     transform: rotate(-45deg);
-    transition-duration: .5s;
+    transition-duration: 0.5s;
   }
 
   #checkbox:checked + .toggle {
-    transition-duration: .5s;
+    transition-duration: 0.5s;
     transform: rotate(180deg);
   }
 
@@ -1303,11 +1465,11 @@ body {
     width: 100%;
     flex-wrap: nowrap;
   }
-  
+
   .navbar-nav li {
     width: 100%;
   }
-  
+
   .navbar-nav a,
   .navbar-nav span {
     white-space: normal;

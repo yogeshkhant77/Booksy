@@ -49,7 +49,7 @@ const Books = () => {
     } catch (error) {
       if (error.response?.status === 400) {
         alert(
-          error.response.data.message || "Book is already in your collection"
+          error.response.data.message || "Book is already in your collection",
         );
       } else {
         alert("Failed to add book to collection");
@@ -153,11 +153,8 @@ const Books = () => {
               <BookActions book={book} />
 
               {user?.role === "admin" ? (
-                <div className="book-actions" style={{ marginTop: "10px" }}>
-                  <Link
-                    to={`/edit-book/${book._id}`}
-                    className="btn-swipe"
-                  >
+                <div className="book-actions-admin">
+                  <Link to={`/edit-book/${book._id}`} className="btn-swipe">
                     Edit
                   </Link>
                   <button
@@ -171,7 +168,13 @@ const Books = () => {
                       viewBox="0 0 39 7"
                       className="bin-top"
                     >
-                      <line strokeWidth="4" stroke="white" y2="5" x2="39" y1="5"></line>
+                      <line
+                        strokeWidth="4"
+                        stroke="white"
+                        y2="5"
+                        x2="39"
+                        y1="5"
+                      ></line>
                       <line
                         strokeWidth="3"
                         stroke="white"
@@ -188,16 +191,18 @@ const Books = () => {
                       className="bin-bottom"
                     >
                       <mask fill="white" id="path-1-inside-1_8_19">
-                        <path
-                          d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"
-                        ></path>
+                        <path d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"></path>
                       </mask>
                       <path
                         mask="url(#path-1-inside-1_8_19)"
                         fill="white"
                         d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
                       ></path>
-                      <path strokeWidth="4" stroke="white" d="M12 6L12 29"></path>
+                      <path
+                        strokeWidth="4"
+                        stroke="white"
+                        d="M12 6L12 29"
+                      ></path>
                       <path strokeWidth="4" stroke="white" d="M21 6V29"></path>
                     </svg>
                     <svg
@@ -214,7 +219,7 @@ const Books = () => {
                   </button>
                 </div>
               ) : user ? (
-                <div className="book-actions" style={{ marginTop: "10px" }}>
+                <div className="book-actions-center">
                   <button
                     onClick={() => handleAddToMyBooks(book._id)}
                     disabled={addingToCollection[book._id]}
